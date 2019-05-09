@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 from django.db import models
 import django.utils.timezone as timezone
 
-# Create your models here.
 
+# Create your models here.
 
 
 class Task(models.Model):
@@ -13,10 +13,10 @@ class Task(models.Model):
     任务信息
     '''
     Task = models.CharField(max_length=20, verbose_name='任务')
-    Starttime = models.DateTimeField(default = timezone.now, verbose_name='开始时间')
+    Starttime = models.DateTimeField(default=timezone.now, verbose_name='开始时间')
     Taksstatus = models.CharField(max_length=15, verbose_name='任务状态')
     Completiontime = models.CharField(max_length=20, verbose_name='结束时间')
-    Cmdb=models.ForeignKey('cmdb',on_delete=models.CASCADE)
+    Cmdb = models.ForeignKey('cmdb', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Task'
@@ -25,6 +25,7 @@ class Task(models.Model):
 
     def __unicode__(self):
         return self.Task
+
 
 class cmdb(models.Model):
     '''
