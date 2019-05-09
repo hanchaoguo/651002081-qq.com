@@ -16,6 +16,7 @@ class Task(models.Model):
     Starttime = models.DateTimeField(default = timezone.now, verbose_name='开始时间')
     Taksstatus = models.CharField(max_length=15, verbose_name='任务状态')
     Completiontime = models.CharField(max_length=20, verbose_name='结束时间')
+    Taskinfo=models.ForeignKey('taskinfo',on_delete=models.CASCADE)
     Cmdb=models.ForeignKey('cmdb',on_delete=models.CASCADE)
 
     class Meta:
@@ -25,6 +26,21 @@ class Task(models.Model):
 
     def __unicode__(self):
         return self.Task
+
+class taskinfo(models.Model):
+     '''
+     任务进度
+     '''
+     taskdetail=models.CharField(max_length=200, verbose_name='任务详情')
+
+     class Meta:
+        verbose_name = 'taskdetail'
+        verbose_name_plural = verbose_name
+
+     def __unicode__(self):
+        return self.Sn
+
+
 
 class cmdb(models.Model):
     '''
